@@ -1,4 +1,4 @@
-# EasyRiggerInitializr | SpringBoot 脚手架，简化项目构建
+# SpringBootInitializer | SpringBoot 脚手架，简化项目构建
 
 > **作者：** 小傅哥，Java Developer，[:pencil2: 虫洞 · 科技栈，作者](https://bugstack.cn)，[:trophy: CSDN 博客专家](https://bugstack.blog.csdn.net)
 
@@ -98,7 +98,7 @@
 ### 1. 工程框架
 
 ```java
-EasyRiggerInitializr
+SpringBootInitializer
 └── src
     ├── main
     │   ├── java
@@ -146,7 +146,7 @@ EasyRiggerInitializr
 
 ### 2. 应用层定义生成类接口
 
-**cn.bugstack.initializr.rigger.application.IProjectGenerator.java**
+**application.cn.wecanrun.initializer.IProjectGenerator.java**
 
 ```java
 public interface IProjectGenerator {
@@ -222,7 +222,7 @@ server:
 
 ### 4. FTL 生成文件
 
-**cn.bugstack.initializr.rigger.domain.service.module.impl.GenerationApplication.java**
+**impl.module.service.domain.cn.wecanrun.initializer.GenerationApplication.java**
 
 ```java
 @Service
@@ -256,7 +256,7 @@ public class GenerationApplication extends BaseModule {
 
 ### 5. 创建框架入口
 
-**cn.bugstack.initializr.rigger.domain.service.ProjectGeneratorImpl.java**
+**service.domain.cn.wecanrun.initializer.ProjectGeneratorImpl.java**
 
 ```java
 @Service
