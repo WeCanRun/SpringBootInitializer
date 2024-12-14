@@ -99,7 +99,7 @@ public class GenerationRestful extends BaseModule {
             if ("id".equals(columnName)) {
                 continue;
             }
-            fields.append("private String ").append(columnName).append(";\n    ");
+            fields.append("private String ").append(convertSnakeToCamel(columnName)).append(";\n    ");
         }
         return fields.toString();
     }
@@ -110,11 +110,16 @@ public class GenerationRestful extends BaseModule {
             if ("id".equals(columnName)) {
                 continue;
             }
-            gettersAndSetters.append("public String get").append(convertSnakeToPascal(columnName)).append("() {\n    ");
-            gettersAndSetters.append("    return this.").append(columnName).append(";\n    ");
+            // 大驼峰
+            String toPascal = convertSnakeToPascal(columnName);
+            // 小驼峰
+            String toCamel = convertSnakeToCamel(columnName);
+
+            gettersAndSetters.append("public String get").append(toPascal).append("() {\n    ");
+            gettersAndSetters.append("    return this.").append(toCamel).append(";\n    ");
             gettersAndSetters.append("}\n\n    ");
-            gettersAndSetters.append("public void set").append(convertSnakeToPascal(columnName)).append("(String ").append(columnName).append(") {\n    ");
-            gettersAndSetters.append("    this.").append(columnName).append(" = ").append(columnName).append(";\n    ");
+            gettersAndSetters.append("public void set").append(toPascal).append("(String ").append(toCamel).append(") {\n    ");
+            gettersAndSetters.append("    this.").append(toCamel).append(" = ").append(toCamel).append(";\n    ");
             gettersAndSetters.append("}\n\n    ");
         }
         return gettersAndSetters.toString();
@@ -148,6 +153,17 @@ public class GenerationRestful extends BaseModule {
         }
 
         return pascalCase.toString();
+    }
+
+    /**
+     * 将下划线格式的字符串转换为小驼峰格式
+     *
+     * @param snakeCase 下划线格式的字符串
+     * @return 小驼峰格式的字符串
+     */
+    public static String convertSnakeToCamel(String snakeCase) {
+        String pascalCase = convertSnakeToPascal(snakeCase);
+        return Character.toLowerCase(pascalCase.charAt(0)) + pascalCase.substring(1);
     }
 
     private List<String> getColumnsForTable(String tableName) {
