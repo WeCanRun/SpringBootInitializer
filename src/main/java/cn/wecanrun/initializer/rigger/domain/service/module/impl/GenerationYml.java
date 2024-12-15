@@ -26,7 +26,7 @@ public class GenerationYml extends BaseModule {
         File file = new File( application.getResource(), "application.yml");
 
         // 写入文件
-        super.writeFile(file, "yml.ftl", null);
+        super.writeFile(file, "yml.ftl", projectInfo);
 
         logger.info("创建配置文件 application.yml {}", file.getPath());
     }

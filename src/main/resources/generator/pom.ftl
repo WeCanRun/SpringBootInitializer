@@ -15,7 +15,7 @@
     <description>${description}</description>
 
      <properties>
-            <java.version>1.21</java.version>
+            <java.version>21</java.version>
       </properties>
 
      <dependencies>
@@ -55,8 +55,43 @@
              <version>2.11.0</version> <!-- 确保使用最新版本 -->
          </dependency>
 
+         <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.10.0</version> <!-- 使用最新版本 -->
+          </dependency>
 
-     </dependencies>
+    <#if enableRedis?? && enableRedis == true>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+    </#if>
+
+    <#if enableKafka?? && enableKafka == true>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+    </#if>
+
+    <#if enableES?? && enableES == true>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <!-- 适配 es7 -->
+            <version>4.1.15</version>
+        </dependency>
+
+    </#if>
+
+    <#if enableWebFlux?? && enableWebFlux == true>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+    </#if>
+    </dependencies>
 
      <build>
          <plugins>

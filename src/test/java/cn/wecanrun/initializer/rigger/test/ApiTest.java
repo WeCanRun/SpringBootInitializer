@@ -30,9 +30,15 @@ public class ApiTest {
         ProjectInfo projectInfo = new ProjectInfo(
                 "cn.wecanrun.demo",
                 "new-test",
-                "1.0.0-SNAPSHOT",
+                "v1",
                 "new-test",
-                "Demo project for Spring Boot"
+                "Demo project for Spring Boot",
+                "WeCanRun",
+                true,
+                true,
+                false,
+                true,
+                true
         );
 
         iProjectGenerator.generator(projectInfo);
