@@ -39,6 +39,9 @@ public class ProjectGeneratorImpl implements IProjectGenerator {
     @Resource
     private GenerationResult generationResult;
 
+    @Resource
+    private GenerationConfigClass generationConfigClass;
+
     @Override
     public void generator(ProjectInfo projectInfo) throws Exception {
 
@@ -60,7 +63,11 @@ public class ProjectGeneratorImpl implements IProjectGenerator {
         // 6. 生成业务代码
         generationRestful.doGeneration(projectInfo, Arrays.asList("article"));
 
+        // 7. 生成 Result
         generationResult.doGeneration(projectInfo);
+
+        // 8. 生成配置类
+        generationConfigClass.doGeneration(projectInfo);
 
     }
 

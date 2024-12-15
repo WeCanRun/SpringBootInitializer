@@ -50,14 +50,14 @@ public class GenerationRestful extends BaseModule {
                 Map<String, Object> dataModel = new HashMap<>();
                 dataModel.put("groupId", projectInfo.getGroupId());
                 dataModel.put("appName", applicationInfo.getAppName());
-                dataModel.put("version", "v1");
+                dataModel.put("version", applicationInfo.getVersion());
                 dataModel.put("packageName", applicationInfo.getPackageName() + ".entity");
                 dataModel.put("tableName", capitalizeFirstLetter(tableName));
                 dataModel.put("fields", generateFields(columnNames));
                 dataModel.put("gettersAndSetters", generateGettersAndSetters(columnNames));
                 dataModel.put("tableNameLower", tableName.toLowerCase());
                 dataModel.put("tableNamePlural", tableName + "s");
-                dataModel.put("author", "generated");
+                dataModel.put("author", applicationInfo.getAuthor());
                 dataModel.put("date", LocalDate.now());
 
                 applicationInfo.setPackageName(projectInfo.getGroupId() + ".entity");
