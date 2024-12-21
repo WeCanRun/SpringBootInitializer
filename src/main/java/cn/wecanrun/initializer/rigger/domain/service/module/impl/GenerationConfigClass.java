@@ -57,10 +57,14 @@ public class GenerationConfigClass extends BaseModule {
         }
 
         if (appInfo.isEnableWebFlux()) {
-            appInfo.setPackageName(projectInfo.getGroupId() + ".controller");
-            File file = new File(appInfo.getSrc() + appInfo.getPackagePath(),"FluxController.java");
+            appInfo.setPackageName(projectInfo.getGroupId());
+            File file = new File(appInfo.getSrc() + appInfo.getPackagePath() + "/controller","StreamController.java");
             super.writeFile(file, "controller-flux.ftl", appInfo);
-            logger.info("生成 FluxController.java: {}", file.getPath());
+            logger.info("生成 StreamController.java: {}", file.getPath());
+
+            file = new File(appInfo.getSrc() + appInfo.getPackagePath() + "/utils","StreamUtils.java");
+            super.writeFile(file, "stream-utils.ftl", appInfo);
+            logger.info("生成 StreamUtils.java: {}", file.getPath());
         }
     }
 }

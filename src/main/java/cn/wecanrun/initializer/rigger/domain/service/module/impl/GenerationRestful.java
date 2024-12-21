@@ -87,6 +87,14 @@ public class GenerationRestful extends BaseModule {
                 super.writeFile(file, "controller-restful.ftl", dataModel);
                 logger.info("生成 Controller： {}", file.getPath());
 
+                applicationInfo.setPackageName(projectInfo.getGroupId() + ".utils");
+                dataModel.put("packageName", applicationInfo.getPackageName());
+
+                file = new File(applicationInfo.getSrc() + applicationInfo.getPackagePath(),"HttpUtils.java");
+                super.writeFile(file, "http-utils.ftl", dataModel);
+
+                logger.info("生成 HttpUtils.java: {}", file.getPath());
+
             }
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
