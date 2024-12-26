@@ -59,12 +59,19 @@ public class GenerationConfigClass extends BaseModule {
         if (appInfo.isEnableWebFlux()) {
             appInfo.setPackageName(projectInfo.getGroupId());
             File file = new File(appInfo.getSrc() + appInfo.getPackagePath() + "/controller","StreamController.java");
-            super.writeFile(file, "controller-flux.ftl", appInfo);
+            super.writeFile(file, "controller-stream.ftl", appInfo);
             logger.info("生成 StreamController.java: {}", file.getPath());
 
             file = new File(appInfo.getSrc() + appInfo.getPackagePath() + "/utils","StreamUtils.java");
             super.writeFile(file, "stream-utils.ftl", appInfo);
             logger.info("生成 StreamUtils.java: {}", file.getPath());
+        }
+
+        if (appInfo.isEnablePrometheusBasicAuth()) {
+            appInfo.setPackageName(projectInfo.getGroupId());
+            File file = new File(appInfo.getSrc() + appInfo.getPackagePath() + "/config","FilterConfig.java");
+            super.writeFile(file, "filter-config.ftl", appInfo);
+            logger.info("生成 FilterConfig.java: {}", file.getPath());
         }
     }
 }

@@ -38,6 +38,8 @@ public class ApiTest {
                 true,
                 false,
                 true,
+                true,
+                true,
                 true
         );
 

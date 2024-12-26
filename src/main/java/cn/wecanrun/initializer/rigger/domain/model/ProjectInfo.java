@@ -12,13 +12,16 @@ public class ProjectInfo {
     protected String version;
     protected String name;
     protected String description;
-    private String author;
+    protected String author;
 
     protected boolean enableRedis;
     protected boolean redisClusterEnabled;
     protected boolean enableES;
     protected boolean enableKafka;
     protected boolean enableWebFlux;
+
+    protected boolean enablePrometheus;
+    protected boolean enablePrometheusBasicAuth;
 
 
     public ProjectInfo() {
@@ -36,7 +39,7 @@ public class ProjectInfo {
 
     public ProjectInfo(String groupId, String artifactId, String version, String name, String description, String author,
                        boolean enableWebFlux, boolean enableRedis, boolean redisClusterEnabled,
-                       boolean enableES, boolean enableKafka) {
+                       boolean enableES, boolean enableKafka, boolean enablePrometheus, boolean enablePrometheusBasicAuth) {
         this.groupId = groupId;
         this.artifactId = artifactId;
         this.version = version;
@@ -48,6 +51,8 @@ public class ProjectInfo {
         this.redisClusterEnabled = redisClusterEnabled;
         this.enableES = enableES;
         this.enableKafka = enableKafka;
+        this.enablePrometheus = enablePrometheus;
+        this.enablePrometheusBasicAuth = enablePrometheusBasicAuth;
     }
 
     public String getGroupId() {
@@ -136,5 +141,21 @@ public class ProjectInfo {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public boolean isEnablePrometheus() {
+        return enablePrometheus;
+    }
+
+    public void setEnablePrometheus(boolean enablePrometheus) {
+        this.enablePrometheus = enablePrometheus;
+    }
+
+    public boolean isEnablePrometheusBasicAuth() {
+        return enablePrometheusBasicAuth;
+    }
+
+    public void setEnablePrometheusBasicAuth(boolean enablePrometheusBasicAuth) {
+        this.enablePrometheusBasicAuth = enablePrometheusBasicAuth;
     }
 }

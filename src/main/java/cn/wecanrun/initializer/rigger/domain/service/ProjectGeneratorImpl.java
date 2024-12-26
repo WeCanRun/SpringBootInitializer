@@ -37,7 +37,7 @@ public class ProjectGeneratorImpl implements IProjectGenerator {
     private GenerationRestful generationRestful;
 
     @Resource
-    private GenerationResult generationResult;
+    private GenerationCommon generationResult;
 
     @Resource
     private GenerationConfigClass generationConfigClass;

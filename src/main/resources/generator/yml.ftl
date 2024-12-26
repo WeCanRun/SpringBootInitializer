@@ -1,6 +1,17 @@
 server:
   port: 8080
 
+<#if enablePrometheus?? && enablePrometheus == true>
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+  metrics:
+    enable:
+      all: true
+</#if>
+
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&serverTimezone=UTC

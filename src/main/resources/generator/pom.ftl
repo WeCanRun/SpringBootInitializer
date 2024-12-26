@@ -91,6 +91,19 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
     </#if>
+
+    <#if enablePrometheus?? && enablePrometheus == true>
+     <!-- Micrometer for Prometheus integration -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+      <!-- Spring Boot Actuator for metrics -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+    </#if>
     </dependencies>
 
      <build>
